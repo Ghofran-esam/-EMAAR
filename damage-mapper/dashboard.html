@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invisible Damage Mapper — Control Center</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark">
+  <header class="topbar">
+   <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+
+<nav class="nav">
+          <a class="navLink" href="../index.html">Home</a>
+
+  <a class="navLink" href="dashboard.html">Dashboard</a>
+  <a class="navLink" href="map.html">Risk Map</a>
+  <a class="navLink" href="sensors.html">Sensors</a>
+  <a class="navLink" href="analytics.html">Analytics</a>
+  <a class="navLink" href="alerts.html">Alerts</a>
+</nav>
+
+
+  </header>
+
+  <main class="container">
+    <!-- KPIs -->
+    <section class="kpiGrid">
+      <div class="kpiCard">
+        <div class="kpiLabel">System Status</div>
+        <div class="kpiValue" id="kpiStatus">Operational</div>
+        <div class="kpiHint" id="kpiStatusHint">All core services running</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Buildings Monitored</div>
+        <div class="kpiValue" id="kpiBuildings">124</div>
+        <div class="kpiHint">Updated every 15 min</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Active Sensors</div>
+        <div class="kpiValue" id="kpiSensors">310/350</div>
+        <div class="kpiHint" id="kpiSensorsHint">88.6% online</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Minor Anomalies</div>
+        <div class="kpiValue warn" id="kpiMinor">7</div>
+        <div class="kpiHint">Need monitoring</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Critical Alerts</div>
+        <div class="kpiValue danger" id="kpiCritical">2</div>
+        <div class="kpiHint">Immediate action</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Avg Resonance Shift (Δf/f) — Last 7 Days</div>
+        <canvas id="lineResonance"></canvas>
+        <div class="panelFootnote">Lower values indicate reduced stiffness / potential internal damage.</div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Alerts by Severity per Day</div>
+        <canvas id="barAlerts"></canvas>
+        <div class="panelFootnote">Critical (red), Warning (yellow), Info (green).</div>
+      </div>
+    </section>
+
+    <!-- Alerts + Quick actions -->
+    <section class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Recent Alerts</div>
+        <div class="alertList" id="recentAlerts"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Quick Actions</div>
+        <div class="actions">
+          <a class="btn primary" href="map.html">View Risk Map</a>
+          <button class="btn" id="exportSummaryBtn">Export Summary (JSON)</button>
+          <button class="btn" id="simulateTickBtn">Simulate New Readings</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="miniBox">
+          <div class="miniTitle">How risk is computed (demo)</div>
+          <ul class="miniList">
+            <li>Resonance shift (Δf/f)</li>
+            <li>Acoustic emission events/day</li>
+            <li>Trend acceleration</li>
+            <li>AI/QML classifier → risk score (0–100)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

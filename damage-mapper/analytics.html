@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics — Invisible Damage Mapper</title>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dark">
+  <header class="topbar">
+   <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+              <a class="navLink" href="../index.html">Home</a>
+
+      <a class="navLink" href="dashboard.html">Dashboard</a>
+      <a class="navLink" href="map.html">Risk Map</a>
+      <a class="navLink" href="sensors.html">Sensors</a>
+      <a class="navLink active" href="analytics.html">Analytics</a>
+      <a class="navLink" href="alerts.html">Alerts</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Mode Toggle -->
+    <section class="panel" style="min-height:auto; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div class="panelTitle">Model Mode Comparison</div>
+          <div class="panelFootnote">
+            Toggle between Classical scoring and Quantum-assisted scoring (demo). Used to show robustness under noise.
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="muted" style="font-size:13px;">Classical</span>
+          <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="modeToggle" style="width:18px; height:18px;">
+            <span class="muted" style="font-size:13px;">Quantum-assisted</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPIs -->
+    <section class="kpiGrid" style="margin-bottom:12px;">
+      <div class="kpiCard">
+        <div class="kpiLabel">Avg Risk Score</div>
+        <div class="kpiValue" id="kpiAvgRisk">—</div>
+        <div class="kpiHint">Across all monitored buildings</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">High Risk Buildings (≥85)</div>
+        <div class="kpiValue danger" id="kpiHighRisk">—</div>
+        <div class="kpiHint">Evacuate-level</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Moderate Risk (65–84)</div>
+        <div class="kpiValue warn" id="kpiMidRisk">—</div>
+        <div class="kpiHint">Monitor-level</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Avg Model Confidence</div>
+        <div class="kpiValue" id="kpiAvgConf">—</div>
+        <div class="kpiHint">Higher = stronger decision</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Noise Sensitivity</div>
+        <div class="kpiValue" id="kpiNoiseSense">—</div>
+        <div class="kpiHint">Lower is better</div>
+      </div>
+    </section>
+
+    <!-- Charts row -->
+    <section class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Zone Comparison (Avg Risk) — North vs Central vs South</div>
+        <canvas id="zoneBar"></canvas>
+        <div class="panelFootnote">Shows how risk varies between regions.</div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Top Risk Drivers (Contribution)</div>
+        <canvas id="driversDoughnut"></canvas>
+        <div class="panelFootnote">Explainability: which signals drive risk most (Δf/f vs AE vs Acceleration).</div>
+      </div>
+    </section>
+
+    <section class="grid2" style="margin-top:12px;">
+      <div class="panel">
+        <div class="panelTitle">Model Confidence Distribution</div>
+        <canvas id="confHist"></canvas>
+        <div class="panelFootnote">Confidence derived from noise level + signal strength (demo).</div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Classical vs Quantum — Avg Risk (Same Buildings)</div>
+        <canvas id="compareLine"></canvas>
+        <div class="panelFootnote">Quantum-assisted mode reduces noise penalty (demo logic).</div>
+      </div>
+    </section>
+  </main>
+
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+  <script src="../js/analytics.js"></script>
+</body>
+</html>

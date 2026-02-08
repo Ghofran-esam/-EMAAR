@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Risk Map — Invisible Damage Mapper</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body class="dark">
+  <header class="topbar">
+   <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+              <a class="navLink" href="../index.html">Home</a>
+
+      <a class="navLink" href="dashboard.html">Dashboard</a>
+      <a class="navLink active" href="map.html">Risk Map</a>
+<a class="navLink" href="sensors.html">Sensors</a>
+      <a class="navLink" href="analytics.html">Analytics</a>
+      <a class="navLink " href="alerts.html">Alerts</a>
+      <button class="navLinkBtn heatToggle" id="toggleHeatBtn">
+  Heat Overlay
+</button>
+    </nav>
+  </header>
+
+  <main class="container mapLayout">
+    <section class="mapPanel">
+      <div class="mapHeader">
+        <div>
+          <div class="panelTitle">Risk Map</div>
+          <div class="panelFootnote">Click a building marker to view the risk score & signals.</div>
+        </div>
+
+        <div class="legend">
+          <span class="dot safe"></span> Safe
+          <span class="dot warn"></span> Monitor
+          <span class="dot danger"></span> Evacuate
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </section>
+
+    <aside class="sidePanel">
+      <div class="panelTitle">Building Details</div>
+
+      <div class="detailCard" id="buildingCard">
+        <div class="muted">Select a building on the map.</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="panelTitle">Download Report</div>
+      <button class="btn primary full" id="downloadReportBtn" disabled>Download PDF (Demo)</button>
+      <div class="panelFootnote">
+        Demo mode: generates a printable report page (no backend).
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+  <script src="../js/map.js"></script>
+</body>
+</html>

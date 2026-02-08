@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sensor Network — Invisible Damage Mapper</title>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body class="dark">
+  <header class="topbar">
+  <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+<nav class="nav">
+      <a class="navLink" href="../index.html">Home</a>
+
+  <a class="navLink" href="dashboard.html">Dashboard</a>
+  <a class="navLink" href="map.html">Risk Map</a>
+  <a class="navLink" href="sensors.html">Sensors</a>
+  <a class="navLink" href="analytics.html">Analytics</a>
+  <a class="navLink" href="alerts.html">Alerts</a>
+</nav>
+
+  </header>
+
+  <main class="container">
+    <!-- Quick KPIs for sensors -->
+    <section class="kpiGrid" style="margin-bottom:12px;">
+      <div class="kpiCard">
+        <div class="kpiLabel">Total Sensors</div>
+        <div class="kpiValue" id="kpiTotalSensors">—</div>
+        <div class="kpiHint">Deployed across monitored buildings</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Active</div>
+        <div class="kpiValue" id="kpiActiveSensors">—</div>
+        <div class="kpiHint">Sending readings normally</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Offline</div>
+        <div class="kpiValue danger" id="kpiOfflineSensors">—</div>
+        <div class="kpiHint">No heartbeat in last hours</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Low Battery</div>
+        <div class="kpiValue warn" id="kpiLowBatterySensors">—</div>
+        <div class="kpiHint">Needs maintenance</div>
+      </div>
+
+      <div class="kpiCard">
+        <div class="kpiLabel">Avg Noise Level</div>
+        <div class="kpiValue" id="kpiAvgNoise">—</div>
+        <div class="kpiHint">Higher = harder signal detection</div>
+      </div>
+    </section>
+
+    <section class="mapLayout">
+      <!-- Map -->
+      <section class="mapPanel">
+        <div class="mapHeader">
+          <div>
+            <div class="panelTitle">Sensor Network Map</div>
+            <div class="panelFootnote">Pins show sensor health: Active / Offline / Low Battery.</div>
+          </div>
+
+          <div class="legend">
+            <span class="dotSmall safe"></span> Active
+            <span class="dotSmall monitor"></span> Low Battery
+            <span class="dotSmall evacuate"></span> Offline
+          </div>
+        </div>
+
+        <div id="sensorMap"></div>
+      </section>
+
+      <!-- Table + filters -->
+      <aside class="sidePanel">
+        <div class="panelTitle">Sensors</div>
+
+        <div class="filterRow">
+          <input class="input" id="searchInput" placeholder="Search Sensor ID / Building ID..." />
+          <select class="select" id="statusFilter">
+            <option value="ALL">All Status</option>
+            <option value="ACTIVE">Active</option>
+            <option value="LOW_BATTERY">Low Battery</option>
+            <option value="OFFLINE">Offline</option>
+          </select>
+        </div>
+
+        <div class="tableWrap">
+          <table class="table" id="sensorTable">
+            <thead>
+              <tr>
+                <th>Sensor ID</th>
+                <th>Building</th>
+                <th>Status</th>
+                <th>Battery</th>
+                <th>Last Seen</th>
+                <th>Noise</th>
+              </tr>
+            </thead>
+            <tbody id="sensorTbody"></tbody>
+          </table>
+        </div>
+
+        <div class="panelFootnote" style="margin-top:10px;">
+          Tip: click a row to zoom to that sensor on the map.
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+  <script src="../js/sensors.js"></script>
+</body>
+</html>

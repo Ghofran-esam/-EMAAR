@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Building Details — Invisible Damage Mapper</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dark">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="navLink" href="../index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="map.html">Risk Map</a>
+      <a href="building.html" style="color: var(--text);">Building Details</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Header Card -->
+    <section class="panel" style="min-height:auto;">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+        <div>
+          <div class="panelTitle" style="margin-bottom:6px;">
+            <span id="bName">Building</span>
+          </div>
+          <div class="panelFootnote" id="bMeta">Loading…</div>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <!-- ✅ changed -->
+          <div id="bStatusBadge" class="statusBadge safe">SAFE</div>
+
+          <div class="kpiCard" style="padding:10px 12px;">
+            <div class="kpiLabel">Risk Score</div>
+            <div class="kpiValue" id="bRisk">--/100</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sensors + Actions -->
+    <section class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Sensors (deployed points)</div>
+        <div class="panelFootnote">Prototype list — shows how sensors are placed on columns/beams.</div>
+        <div class="divider"></div>
+
+        <div style="overflow:auto;">
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="text-align:left; color: var(--muted); font-size:12px;">
+                <th style="padding:10px; border-bottom:1px solid var(--line);">Sensor ID</th>
+                <th style="padding:10px; border-bottom:1px solid var(--line);">Type</th>
+                <th style="padding:10px; border-bottom:1px solid var(--line);">Placement</th>
+                <th style="padding:10px; border-bottom:1px solid var(--line);">Last Reading</th>
+                <th style="padding:10px; border-bottom:1px solid var(--line);">Status</th>
+              </tr>
+            </thead>
+            <tbody id="sensorTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Actions</div>
+
+        <div class="actions">
+          <button class="btn primary" id="createAlertBtn">Create Alert</button>
+          <button class="btn" id="markInspectedBtn">Mark as Inspected</button>
+          <a class="btn ghost" href="map.html">Back to Map</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="miniBox">
+          <div class="miniTitle">Explainable AI (Why this decision?)</div>
+          <div class="panelFootnote" style="margin:6px 0 10px;">
+            We don’t “look for cracks”. We detect signature change under uncertainty.
+          </div>
+          <ul class="miniList" id="xaiList"></ul>
+        </div>
+
+        <div class="divider"></div>
+        <div class="panelFootnote" id="inspectNote"></div>
+      </div>
+    </section>
+
+    <!-- 3 Panels -->
+    <section class="grid2">
+      <div class="panel">
+        <div class="panelTitle">Vibration FFT + Peaks</div>
+        <canvas id="fftChart"></canvas>
+        <div class="panelFootnote">Peaks reflect structural resonance. Shifts indicate reduced stiffness.</div>
+      </div>
+
+      <div class="panel">
+        <div class="panelTitle">Acoustic Emissions — Pulses Count</div>
+        <canvas id="aeChart"></canvas>
+        <div class="panelFootnote">Micro-crack pulses are short events (different from continuous noise).</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panelTitle">Trend Over Time + Acceleration</div>
+      <canvas id="trendChart"></canvas>
+      <div class="panelFootnote">
+        Key indicator is <b>acceleration of deterioration</b> — not just a single measurement.
+      </div>
+    </section>
+  </main>
+
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+  <script src="../js/building.js"></script>
+</body>
+</html>

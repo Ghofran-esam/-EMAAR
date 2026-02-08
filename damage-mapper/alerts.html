@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alerts Center — Invisible Damage Mapper</title>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="dark">
+  <header class="topbar">
+  <div class="brand">
+      <div class="logo">IDM</div>
+      <div class="brand-text">
+        <div class="brand-name">EMAAR</div>
+        <div class="brand-sub">Quantum-Enhanced Early Collapse Risk Mapping</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+              <a class="navLink" href="../index.html">Home</a>
+
+      <a class="navLink" href="dashboard.html">Dashboard</a>
+      <a class="navLink" href="map.html">Risk Map</a>
+      <a class="navLink" href="sensors.html">Sensors</a>
+      <a class="navLink" href="analytics.html">Analytics</a>
+      <a class="navLink active" href="alerts.html">Alerts</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="panel" style="min-height:auto;">
+      <div class="panelTitle">Alerts Center</div>
+      <div class="panelFootnote">Current alerts, history, and demo rules (threshold-based).</div>
+
+      <div class="divider"></div>
+
+      <!-- Tabs -->
+      <div class="actions" style="gap:8px;">
+        <button class="btn" id="tabCurrent">Current Alerts</button>
+        <button class="btn" id="tabHistory">Alert History</button>
+        <button class="btn" id="tabRules">Alert Rules</button>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:12px;">
+      <div id="tabContent"></div>
+    </section>
+  </main>
+
+<script src="../js/store.js"></script>
+<script src="../js/risk.js"></script>
+<script src="../js/sensorsStore.js"></script>
+<script src="../js/alertsStore.js"></script>
+<script src="../js/data.js"></script>
+
+  <script src="../js/alerts.js"></script>
+</body>
+</html>
